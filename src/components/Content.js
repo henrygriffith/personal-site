@@ -15,7 +15,7 @@ const Content = props => {
       <ProjectMenu />
     </div>
   ) : contentType === "resume" ? (
-    <div className="content-box">
+    <div className="resume-box">
       <Resume />
     </div>
   ) : contentType === "contact" ? (
