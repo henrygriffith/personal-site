@@ -545,7 +545,7 @@ textarea{
     border-radius: 4px;                   
     resize: vertical;
 }
-input[type=submit] {
+button[type=submit] {
     width: 10%;          
     background-color: #4CAF50;              
     color: white;              
@@ -556,7 +556,11 @@ input[type=submit] {
 }
 input[type=submit]:hover {              
     background-color: #45a049;
-}              
+}        
+.form-input{
+    color: black !important;
+    font-size: 20pt;
+}      
 
 
 

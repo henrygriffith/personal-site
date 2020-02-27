@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { TextField } from "@material-ui/core";
 
 class Contact extends React.Component {
   constructor() {
@@ -12,6 +13,8 @@ class Contact extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+    this.showMessage = this.showMessage.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -39,11 +42,13 @@ class Contact extends React.Component {
       url: "http://localhost:3002/send",
       data: this.state
     }).then(response => {
-      if (response.data.status === "success") {
+      if (response.data.msg === "success") {
+        console.log("success");
         this.resetForm();
         this.setState({ status: "success" });
       } else if (response.data.status === "fail") {
-        this.showMessage("fail");
+        console.log("fail");
+        this.setState({ status: "fail" });
       }
     });
   }
@@ -55,14 +60,20 @@ class Contact extends React.Component {
           <h1 id="contact-title">Contact</h1>
         </div>
         <div id="form-container">
-          <form id="main-form" action="/action_page.php">
+          <form
+            id="main-form"
+            action="/send"
+            onSubmit={event => this.handleSubmit(event)}
+            method="POST"
+          >
             <div id="input-container">
               <div className="input-box">
                 <h2>Name:</h2>
                 <input
+                  className="form-input"
                   type="text"
                   name="name"
-                  placeholder="  Your name..."
+                  label="Name"
                   value={this.state.name}
                   onChange={this.handleChange}
                 ></input>
@@ -70,9 +81,10 @@ class Contact extends React.Component {
               <div className="input-box">
                 <h2>Email:</h2>
                 <input
+                  className="form-input"
                   type="email"
                   name="email"
-                  placeholder="  Your email..."
+                  label="Email"
                   value={this.state.email}
                   onChange={this.handleChange}
                 ></input>
@@ -80,18 +92,16 @@ class Contact extends React.Component {
             </div>
             <h2>Message:</h2>
             <textarea
+              className="form-input"
               type="text"
               name="message"
-              placeholder="  Write a message..."
+              label="Write a message..."
               value={this.state.message}
               onChange={this.handleChange}
             ></textarea>
+            <input type="submit" value="submit"></input>
           </form>
-          <input
-            type="submit"
-            value="submit"
-            onClick={e => this.handleSubmit(e)}
-          ></input>
+
           {this.showMessage()}
         </div>
       </div>

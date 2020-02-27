@@ -1,17 +1,30 @@
 const express = require("express");
 const router = express.Router();
-
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-const { USER, PASS } = process.env;
+const app = express();
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
+app.use("/", router);
+app.use((request, response, next) => {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+const PORT = 3002;
+app.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
+});
 
 const transport = {
-  host: "smtp.mail.yahoo.com",
-  service: "Yahoo",
-  port: 587,
+  host: "smtp.gmail.com",
   auth: {
-    user: USER,
-    pass: PASS
+    type: "login",
+    user: process.env.EMAIL,
+    pass: process.env.PASS
   }
 };
 const transporter = nodemailer.createTransport(transport);
@@ -24,13 +37,13 @@ transporter.verify((error, success) => {
   }
 });
 
-router.post((req, res, next) => {
+router.post("/send", (req, res, next) => {
   const { name, email, message } = req.body;
   const content = `name: ${name} \n email: ${email} \n message: ${message}`;
 
   const mail = {
-    from: name,
-    to: USER,
+    from: process.env.EMAIL,
+    to: process.env.EMAIL,
     subject: "New message from Personal Website",
     text: content
   };
@@ -47,9 +60,3 @@ router.post((req, res, next) => {
     }
   });
 });
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-app.use("/", router);
-app.listen(3002);
