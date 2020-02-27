@@ -15,6 +15,10 @@ const TabMenu = props => {
         <span className="tab-arrow">&rsaquo;</span>{" "}
         <span className="tab-text">Resume</span>
       </h3>
+      <h3 className="tab" onClick={() => props.handleClick("contact")}>
+        <span className="tab-arrow">&rsaquo;</span>{" "}
+        <span className="tab-text">Contact</span>
+      </h3>
     </div>
   );
 };

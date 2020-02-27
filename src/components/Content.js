@@ -19,7 +19,7 @@ const Content = props => {
       <Resume />
     </div>
   ) : contentType === "contact" ? (
-    <div className="content-box">
+    <div className="resume-box">
       <Contact />
     </div>
   ) : null;

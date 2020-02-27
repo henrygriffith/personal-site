@@ -9,9 +9,6 @@ const IconMenu = () => {
       <a href="https://github.com/henrygriffith">
         <i className="fab fa-github"></i>
       </a>
-      <a href>
-        <i className="fas fa-envelope"></i>
-      </a>
     </div>
   );
 };
