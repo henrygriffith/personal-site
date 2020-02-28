@@ -14,7 +14,7 @@ app.use((request, response, next) => {
   response.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
-const PORT = 3002;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });

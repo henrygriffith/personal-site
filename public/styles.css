@@ -158,6 +158,7 @@ body,
 .fab:hover,
 .fas:hover{
     cursor: pointer;
+    color: white;
 }
 .fa-linkedin{
     animation: reveal 0.5s ease-in forwards; 
@@ -438,19 +439,25 @@ body,
     -webkit-animation: fadeFromRight 0.6s ease-in forwards;
 }
 #resume-container{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 #resume-header{
+    margin-top: 8px;
+    width: 80%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 18px;
 }
 #resume-title{
-    border-bottom: 1px solid lightcoral;
+    border-bottom: 1px solid rgb(233, 152, 152);
     font-size: 30pt;
     font-weight: 200;
+    letter-spacing: 3px;
 }
 .content-link,
 .content-button
@@ -480,8 +487,8 @@ body,
     padding-left: 6px;
 }
 #resume-pdf{
-    width: 700px;
-    height: 500px;
+    width: 80%;
+    height: 80%;
     margin: auto;
 }
 
@@ -494,25 +501,30 @@ body,
     align-items: center;
 }
 #contact-header{
-    width: 100%;
+    margin-top: 16px;
+    width: 90%;
     height: 10%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     
 }
 #contact-title{
     margin: 24px;
-    border-bottom: 1px solid lightcoral;
+    border-bottom: 1px solid rgb(238, 157, 157);
+    font-size: 30pt;
+    font-weight: 200;
+    letter-spacing: 3px;
+
 }
 form h2{
     font-size: 1.75em;
-    font-weight: 200;
-    margin-top: 10px;
+    font-weight: 150;
+    margin: 10px 0 6px 0;
 }
 #form-container{
     margin-top: 6px;
-    width: 90%;
+    width: 85%;
     height: 75%;
     display: flex;
     flex-direction: column;
@@ -530,20 +542,36 @@ form h2{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 50%;
+}
+.input-box h2 {
+    width: 90%;
+}
+.input-box2 {
+    align-items: flex-end;
 }
 input[type=text], input[type=email]{
-    width: 250px;
-    height: 30px;
-    border: 1px solid white;
-    border-radius: 4px;                    
+    width: 87.5%;
+    height: 35px;
+    /* border-bottom: 1px solid white; */                
     resize: vertical;
 }
 textarea{
     width: 100%;
-    height: 50%;
-    border: 1px solid white;
-    border-radius: 4px;                   
+    height: 50%;             
     resize: vertical;
+}
+input[type=text], input[type=email], textarea{
+    color: rgb(238, 164, 164);
+    background-color: var(--content-color);
+    font-size: 16pt;
+    outline: none;
+    border: 2px solid #333;
+    border-radius: 4px; 
+    transition: 0.75s
+}
+input[type=text]:focus, input[type=email]:focus, textarea:focus{
+    border: 2px solid white;
 }
 button[type=submit] {
     width: 10%;          
@@ -556,11 +584,12 @@ button[type=submit] {
 }
 input[type=submit]:hover {              
     background-color: #45a049;
-}        
-.form-input{
-    color: black !important;
-    font-size: 20pt;
-}      
+}
+h4 i{
+    color: rgb(220, 219, 219);
+    font-weight: 200;
+    margin: 4px;
+}          
 
 
 

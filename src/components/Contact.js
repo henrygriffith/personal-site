@@ -39,10 +39,10 @@ class Contact extends React.Component {
     event.preventDefault();
     axios({
       method: "POST",
-      url: "http://localhost:3002/send",
+      url: "http://localhost:3000/send",
       data: this.state
     }).then(response => {
-      if (response.data.msg === "success") {
+      if (response.data.status === "success") {
         console.log("success");
         this.resetForm();
         this.setState({ status: "success" });
@@ -58,13 +58,18 @@ class Contact extends React.Component {
       <div id="contact-container">
         <div id="contact-header">
           <h1 id="contact-title">Contact</h1>
+          {this.showMessage()}
         </div>
         <div id="form-container">
+          <h4>
+            <i>*send a message below to hgriffithdev@gmail.com</i>
+          </h4>
           <form
             id="main-form"
             action="/send"
             onSubmit={event => this.handleSubmit(event)}
             method="POST"
+            autoComplete="off"
           >
             <div id="input-container">
               <div className="input-box">
@@ -78,7 +83,7 @@ class Contact extends React.Component {
                   onChange={this.handleChange}
                 ></input>
               </div>
-              <div className="input-box">
+              <div className="input-box input-box2">
                 <h2>Email:</h2>
                 <input
                   className="form-input"
@@ -99,10 +104,8 @@ class Contact extends React.Component {
               value={this.state.message}
               onChange={this.handleChange}
             ></textarea>
-            <input type="submit" value="submit"></input>
+            <input id="form-submit-btn" type="submit" value="Send"></input>
           </form>
-
-          {this.showMessage()}
         </div>
       </div>
     );
