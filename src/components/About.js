@@ -31,7 +31,7 @@ const About = () => {
   return (
     <div id="about-container">
       <div id="about-text-container">
-        <h1 id="about-header">{aboutText}</h1>
+        <h1 id="about-header">About</h1>
         <br />
         <p className="about-text">
           Welcome! I recently graduated from UCLA with a B.A. in Economics. My
